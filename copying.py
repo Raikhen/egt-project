@@ -1,18 +1,26 @@
 import random
+import numpy as np
+
+# Parameters
+poly_deg = 5
+poly_min = -2
+poly_max = 2
 
 def random_polynomial():
-    # This implementation is incorrect
-    
-    polynomial = []
+    return np.random.uniform(
+        low = poly_min,
+        high = poly_max,
+        size = (poly_deg + 1, poly_deg + 1)
+    )
 
-    for _ in range(3):
-        p = []
+def get_copying(polynomial):
+    def copying(x, y):
+        s = 0
 
-        for _ in range(poly_deg + 1):
-            p.append(random.uniform(poly_min, poly_max))
+        for i, p in enumerate(polynomial):
+            for j, c in enumerate(p):
+                s += c * pow(x, i) * pow(y, j)
 
-        polynomial.append(p)
+        return np.clip(s, 0, 1)
 
-    return polynomial
-
-def normalize(polynomial):
+    return copying
