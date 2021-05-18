@@ -2,9 +2,10 @@ import random
 import numpy as np
 
 # Parameters
-poly_deg = 5
+poly_deg = 2
 poly_min = -2
 poly_max = 2
+mut_rate = .1
 
 def random_polynomial():
     return np.random.uniform(
@@ -24,3 +25,7 @@ def get_copying(polynomial):
         return np.clip(s, 0, 1)
 
     return copying
+
+def mutate(polynomial):
+    s = np.random.normal(0, mut_rate, size = (poly_deg + 1, poly_deg + 1))
+    return s + polynomial
