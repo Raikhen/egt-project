@@ -25,8 +25,8 @@ def test(pop, iter, copying):
         max {pop[0].memes} \t
         min {pop[-1].memes} \t
         max_learner {pop[pop_size // 2:][0].memes} \t
-        max_learner dna {pop[pop_size // 2:][0].dna.flatten()} \t
-        worst dna {pop[-1].dna.flatten()} \t
+        max_learner dna {pop[pop_size // 2:][0].dna} \t
+        worst dna {pop[-1].dna} \t
         copying {copying} \t
         {meme_count}'''
     )

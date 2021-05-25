@@ -26,7 +26,7 @@ for j in range(gens_qty):
                 if random.uniform(0, 1) > .8:
                     copying = (amf, bmf, p)
 
-                if random.uniform(0, 1) > p:
+                if random.uniform(0, 1) < p:
                     a.memes[i] = b.memes[i].mutate()
 
     # Testing
