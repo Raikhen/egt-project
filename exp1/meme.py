@@ -4,7 +4,7 @@ import random
 
 # Parameters
 meme_min = 1
-meme_max = 10
+meme_max = 1
 mut_rate = 0.1
 mut_min = -10
 mut_max = 10

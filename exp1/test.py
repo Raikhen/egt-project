@@ -1,7 +1,7 @@
 import numpy as np
 from collections import Counter
 
-def test(pop, iter, copying):
+def test(pop, iter):
     pop_size = len(pop)
 
     pop.sort(key = lambda a: - a.fitness())
@@ -27,6 +27,5 @@ def test(pop, iter, copying):
         max_learner {pop[pop_size // 2:][0].memes} \t
         max_learner dna {pop[pop_size // 2:][0].dna} \t
         worst dna {pop[-1].dna} \t
-        copying {copying} \t
         {meme_count}'''
     )
