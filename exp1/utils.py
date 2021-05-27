@@ -1,4 +1,5 @@
 from scipy.optimize import minimize
+from scipy.optimize import differential_evolution
 
 # Normalizes output to be between 0 and 1
 def normalize(f):
@@ -7,6 +8,11 @@ def normalize(f):
 
     min_pos = minimize(g, x0 = (0.5, 0.5), bounds=((0, 1), (0, 1))).x
     max_pos = minimize(h, x0 = (0.5, 0.5), bounds=((0, 1), (0, 1))).x
+    
+    '''
+    min_pos = differential_evolution(g, bounds=((0, 1), (0, 1))).x
+    max_pos = differential_evolution(h, bounds=((0, 1), (0, 1))).x
+    '''
 
     minv = g(min_pos)
     maxv = g(max_pos)
