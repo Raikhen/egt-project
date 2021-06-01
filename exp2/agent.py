@@ -36,5 +36,10 @@ class Agent:
     def copies(self, copied, goal):
         fitness_diff = self.fitness(goal) - copied.fitness(goal)
 
+        if fitness_diff > 0:
+            self.meme = mutate_meme(deepcopy(copied.meme))
+
+        '''
         if self.evaluate(fitness_diff):
             self.meme = mutate_meme(deepcopy(copied.meme))
+        '''

@@ -14,11 +14,7 @@ goal = [1] * str_len
 for gen in range(gens):
     # Season management
     if gen % season_len == 0:
-        print('\nThe season ends:')
-        debug(pop, goal)
         goal = np.random.choice([0, 1], size = str_len)
-        print('\nThe season begins:')
-        debug(pop, goal)
 
     # Exploratory time
     for a in pop:
@@ -42,7 +38,7 @@ for gen in range(gens):
     p = [pop[i].fitness(goal) / s for i in range(pop_size)]
 
     # Debug
-    # debug(pop, goal)
+    debug(pop, gen, goal)
 
     # Selection
     to_repr = np.random.choice(range(pop_size), p = p)
