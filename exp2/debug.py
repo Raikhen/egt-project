@@ -13,20 +13,25 @@ def print_max_fitness(pop, goal):
     print(to_str(goal))
 
 def debug(pop, gen, goal):
+    # Only cultured agents
     cultured = list(filter(lambda a: a.dna.cultural, pop))
 
+    # Sum of fitness of cultured and genetic agents
     cult_fit = sum([a.fitness(goal) for a in cultured])
     hard_fit = sum([a.fitness(goal) for a in pop]) - cult_fit
 
+    # Number of cultured and genetic agents
     cult_num = len(cultured)
     hard_num = pop_size - cult_num
 
-    cult_avg_fit = cult_fit / cult_num if cult_num != 0 else 0
-    hard_avg_fit = hard_fit / hard_num if hard_num != 0 else 0
+    # Average fitness for cultured and genetic agents
+    cscore = round(cult_fit / cult_num, 3) if cult_num != 0 else 0
+    gscore = round(hard_fit / hard_num, 3) if hard_num != 0 else 0
 
-    print(f'{round(cult_avg_fit, 2)}\t{round(hard_avg_fit, 2)}\t{cult_num}')
+    # Frequency of cultured in the population
+    cdom = round(cult_num / pop_size, 3)
 
-    # print(cultured[0].dna.eval_data)
+    # Season
+    season = gen // season_len
 
-    # Max fitness
-    # print_max_fitness(pop, goal)
+    print(f'{season}\t{gen}\t{cscore}\t{gscore}\t{cdom}')

@@ -34,7 +34,7 @@ class Agent:
         return str(self.dna)
 
     def copies(self, copied, goal):
-        fitness_diff = self.fitness(goal) - copied.fitness(goal)
+        fitness_diff = copied.fitness(goal) - self.fitness(goal)
 
         if fitness_diff > 0:
             self.meme = mutate_meme(deepcopy(copied.meme))

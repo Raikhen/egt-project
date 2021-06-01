@@ -1,7 +1,7 @@
 import numpy as np
 
 from setup import *
-from debug import debug, season_debug
+from debug import debug
 from agent import Agent
 from utils import hamming_fitness
 
@@ -15,6 +15,8 @@ for gen in range(gens):
     # Season management
     if gen % season_len == 0:
         goal = np.random.choice([0, 1], size = str_len)
+
+    debug(pop, gen, goal)
 
     # Exploratory time
     for a in pop:
