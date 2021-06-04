@@ -31,8 +31,9 @@ for gen in range(gens):
 
     # Copying seasons
     for i in range(copy_num):
-        copier = np.random.choice(pop)
-        copied = np.random.choice(pop)
+        cultured = list(filter(lambda a: a.dna.cultural, pop))
+        copier = np.random.choice(cultured)
+        copied = np.random.choice(cultured)
         copier.copies(copied, goal)
 
     # Fitness and reproduction probabilities

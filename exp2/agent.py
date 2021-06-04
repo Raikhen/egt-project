@@ -12,6 +12,7 @@ class Agent:
             self.dna = DNA()
         else:
             self.dna = deepcopy(dna)
+            self.dna.mutate()
 
         # Copying evaluation function
         m, b = self.dna.eval_data

@@ -1,5 +1,5 @@
 from setup import *
-from utils import to_str
+from utils import to_str, hamming_fitness
 
 def print_max_fitness(pop, goal):
     pop.sort(key = lambda a: - a.fitness(goal))
@@ -34,4 +34,10 @@ def debug(pop, gen, goal):
     # Season
     season = gen // season_len
 
-    print(f'{season}\t{gen}\t{cscore}\t{gscore}\t{cdom}')
+    # Only hardcoders
+    hardcoders = list(filter(lambda a: not a.dna.cultural, pop))
+    memes = [h.meme for h in hardcoders]
+    avg = sum([hamming_fitness(m, goal) for m in memes]) / len(hardcoders)
+    avg = round(avg, 3)
+
+    print(f'{season}\t{gen}\t{cscore}\t{gscore}\t{cdom}\t{avg}')
